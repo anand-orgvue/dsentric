@@ -19,6 +19,7 @@ lazy val buildSettings = Seq(
   ),
   addCompilerPlugin("com.github.ghik" % "silencer-plugin" % "1.7.11" cross CrossVersion.full),
   resolvers ++= Seq(
+    "orgvue-orgvue-backend" at "https://orgvue-824511106731.d.codeartifact.us-east-1.amazonaws.com/maven/orgvue-backend",
     DefaultMavenRepository,
     Resolver.typesafeIvyRepo("releases"),
     Resolver.sbtPluginRepo("releases"),
@@ -44,8 +45,8 @@ Test / packageDoc / publishArtifact := true
 
 // enable publishing the test sources jar
 Test / packageSrc / publishArtifact := true
-publishTo in ThisBuild := Some(
-  "Artifactory Realm" at "https://artifactory.orgvue.com:443/artifactory/company-sbt-release"
+ThisBuild / publishTo := Some(
+  "orgvue-orgvue-backend" at "https://orgvue-824511106731.d.codeartifact.us-east-1.amazonaws.com/maven/orgvue-backend"
 )
 
 lazy val reflect      = "org.scala-lang"     % "scala-reflect" % "2.13.8"
